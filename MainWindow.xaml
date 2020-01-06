@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pomodedouche"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="549" Width="503">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="255*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Lancer" HorizontalAlignment="Center" Margin="0,309,0,0" VerticalAlignment="Top" Click="Button_Click" Height="20" Width="38"/>
+        <Button Content="Pause" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Width="38" Height="20"/>
 
     </Grid>
 </Window>
