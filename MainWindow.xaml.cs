@@ -48,7 +48,9 @@ namespace Pomodedouche
                 left_time = total_time;
                 pause = !pause;
 
-            } else {
+            }
+            else
+            {
                 left_time--;
             }
             update_lbTimer();
@@ -57,7 +59,8 @@ namespace Pomodedouche
         void update_lbTimer()
         {
             String sec = (left_time % 60).ToString().PadLeft(2, '0');
-            lbTime.Content = $"{left_time / 60}:{sec}";
+            lbTime.Content = $"{left_time / 60}:{sec} {left_time * 100 / total_time}";
+            TimerBar.Value = left_time * 100 / total_time;
         }
 
         private void Button_Play(object sender, RoutedEventArgs e)
@@ -66,8 +69,11 @@ namespace Pomodedouche
             {
                 timer.Stop();
 
-            } else {
+            }
+            else
+            {
                 timer.Start();
+
             }
             timer_start = !timer_start;
         }

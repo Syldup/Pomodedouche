@@ -6,4 +6,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="pausebutton.png" />
+    <None Remove="playbutton.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="pausebutton.png" />
+    <Resource Include="playbutton.png" />
+  </ItemGroup>
+
 </Project>
