@@ -30,6 +30,7 @@ namespace Pomodedouche
         public MainWindow()
         {
             InitializeComponent();
+<<<<<<< Updated upstream
 
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
@@ -57,6 +58,9 @@ namespace Pomodedouche
         {
             String sec = (left_time % 60).ToString().PadLeft(2, '0');
             lbTime.Content = $"{left_time / 60}:{sec}";
+=======
+            
+>>>>>>> Stashed changes
         }
 
         private void Button_Play(object sender, RoutedEventArgs e)
@@ -69,6 +73,11 @@ namespace Pomodedouche
                 timer.Start();
             }
             timer_start = !timer_start;
+        }
+
+        private void ModifierForme()
+        {
+            EllipseTimer.Fill = System.Windows.Media.Brushes.DarkBlue;
         }
     }
 }

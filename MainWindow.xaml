@@ -16,8 +16,9 @@
         <Label Name="lbTime" Content="25:00" HorizontalAlignment="Center" Margin="0,99,0,0" VerticalAlignment="Top" FontSize="36" Panel.ZIndex="10"/>
         <Button Content="Ajouter un mot clé" HorizontalAlignment="Left" Margin="267,422,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="115,423,0,0" Text="MotCléTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Ellipse HorizontalAlignment="Center" Height="108" Margin="0,76,0,0" VerticalAlignment="Top" Width="115" Fill="#FF5285F3"/>
+        <Ellipse x:Name="EllipseTimer" HorizontalAlignment="Center" Height="137" Margin="0,64,0,0" VerticalAlignment="Top" Width="137" Fill="#FF5285F3" RenderTransformOrigin="55,0" StrokeThickness="0" Stroke="White"/>
         <Label Content="Pomodedouche" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Ellipse HorizontalAlignment="Center" Height="100" Margin="0,82,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Panel.ZIndex="2" Fill="White"/>
 
     </Grid>
 </Window>
