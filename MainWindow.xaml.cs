@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml;
 
 namespace Pomodedouche
 {
@@ -23,7 +24,7 @@ namespace Pomodedouche
     {
         private DispatcherTimer timer = new DispatcherTimer();
         private int total_time = 60 * 25;
-        private int left_time = 0;
+        private int left_time = 60 * 25;
         private bool timer_start = false;
         private bool pause = false;
 
@@ -69,6 +70,47 @@ namespace Pomodedouche
                 timer.Start();
             }
             timer_start = !timer_start;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void append_xml()
+        {
+            string id = "";
+            string name = "";
+            string age = "";
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.CreateXmlDeclaration("1.0", "utf-8", "yes");
+            //Create a root element
+            XmlNode rootNode = xmlDoc.CreateElement("Users");
+            //Create a sub element
+            XmlNode subNode = xmlDoc.CreateElement("Usesr");
+            //Create subNode's attribute
+            XmlAttribute idAttribute = xmlDoc.CreateAttribute("Id");
+            idAttribute.Value = id;
+
+            XmlAttribute nameAttribute = xmlDoc.CreateAttribute("Name");
+            nameAttribute.Value = name;
+
+            XmlAttribute ageAttribute = xmlDoc.CreateAttribute("Age");
+            ageAttribute.Value = age;
+
+            subNode.Attributes.Append(idAttribute);
+            subNode.Attributes.Append(nameAttribute);
+            subNode.Attributes.Append(ageAttribute);
+
+            rootNode.AppendChild(subNode);
+            xmlDoc.AppendChild(rootNode);
+
+            xmlDoc.Save("D:/User.xml");
+        }
+        private void ClrPcker_Background_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+        {
+            lbTime.Content = "#" + ClrPcker_Background.SelectedColor.R.ToString() + ClrPcker_Background.SelectedColor.G.ToString() + ClrPcker_Background.SelectedColor.B.ToString();
         }
     }
 }
