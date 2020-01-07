@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pomodedouche"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="549" Width="503" Background="#FF15202B">
     <Grid>
@@ -12,8 +13,12 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
+<<<<<<< HEAD
 
         <ToggleButton Name="PlayPause" Height="50" Width="50" Click="Button_Play"  BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="341,191,99,292" Foreground="White">
+=======
+        <ToggleButton Name="PlayPause" Height="50" Width="50" Click="Button_Play"  BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="341,191,99,292">
+>>>>>>> master
             <ToggleButton.Style>
                 <Style TargetType="{x:Type ToggleButton}">
 
@@ -51,6 +56,5 @@
             <Label Content="Label" HorizontalAlignment="Left" Margin="54,31,0,0" VerticalAlignment="Top" Background="#FF4ACCFD" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
 
         </Grid>
-
     </Grid>
 </Window>
