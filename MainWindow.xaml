@@ -12,9 +12,8 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Lancer" HorizontalAlignment="Center" Margin="0,309,0,0" VerticalAlignment="Top" Click="Button_Click" Height="20" Width="38"/>
-        <Button Content="Pause" HorizontalAlignment="Center" Margin="0,213,0,0" VerticalAlignment="Top" Width="38" Height="20"/>
-        <Label Content="25:00" HorizontalAlignment="Center" Margin="0,99,0,0" VerticalAlignment="Top" FontSize="36" Panel.ZIndex="10"/>
+        <Button Content="Lancer" HorizontalAlignment="Center" Margin="0,309,0,0" VerticalAlignment="Top" Click="Button_Play" Height="20" Width="38"/>
+        <Label Name="lbTime" Content="25:00" HorizontalAlignment="Center" Margin="0,99,0,0" VerticalAlignment="Top" FontSize="36" Panel.ZIndex="10"/>
         <Button Content="Ajouter un mot clé" HorizontalAlignment="Left" Margin="267,422,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="115,423,0,0" Text="MotCléTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Ellipse HorizontalAlignment="Center" Height="108" Margin="0,76,0,0" VerticalAlignment="Top" Width="115" Fill="#FF5285F3"/>
