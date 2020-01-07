@@ -13,12 +13,9 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-<<<<<<< HEAD
 
         <ToggleButton Name="PlayPause" Height="50" Width="50" Click="Button_Play"  BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="341,191,99,292" Foreground="White">
-=======
-        <ToggleButton Name="PlayPause" Height="50" Width="50" Click="Button_Play"  BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="341,191,99,292">
->>>>>>> master
+
             <ToggleButton.Style>
                 <Style TargetType="{x:Type ToggleButton}">
 
@@ -50,6 +47,7 @@
         <Label Content="Pomodedouche" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
         <ProgressBar x:Name="TimerBar" HorizontalAlignment="Left" Height="19" Margin="291,152,0,0" VerticalAlignment="Top" Width="149" Foreground="#FF1784DE"/>
         <Expander Grid.Column="2" Header="Expander" HorizontalAlignment="Left" Height="100" Margin="177,248,0,0" VerticalAlignment="Top" Width="100"/>
+            
         <Grid Margin="10,94,311,333">
             <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,2,0,0" FontSize="18" Foreground="White"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="12,31,0,0" VerticalAlignment="Top" Background="#FF5DEA84" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
