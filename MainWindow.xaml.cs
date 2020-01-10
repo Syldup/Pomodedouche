@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+<<<<<<< HEAD
 using System.Windows.Threading;
 
+=======
+using System.Windows.Controls;
+using System.Windows.Threading;
+>>>>>>> master
 
 namespace Pomodedouche
 {
@@ -26,7 +31,7 @@ namespace Pomodedouche
             this.pomodoros = new List<Pomodoro>();
             this.tags = new List<Tag>();
 
-            //var window = new Window();
+            var window = new Window();
 
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
@@ -65,7 +70,8 @@ namespace Pomodedouche
             {
                 timer.Stop();
             }
-            else {
+            else
+            {
                 timer.Start();
             }
             timer_start = !timer_start;
@@ -83,12 +89,15 @@ namespace Pomodedouche
         {
             String name = tbPomoName.Text;
             Pomodoro pomo = new Pomodoro(name);
-            
+
             pomo.setTags(tags);
             tags = new List<Tag>();
 
             this.pomodoros.Add(pomo);
+<<<<<<< HEAD
             this.icTags.DataContext = new ObservableCollection<Tag>(this.tags);
+=======
+>>>>>>> master
             this.icPomos.DataContext = new ObservableCollection<Pomodoro>(this.pomodoros);
         }
     }
