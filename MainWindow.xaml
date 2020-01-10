@@ -9,9 +9,10 @@
         Title="MainWindow" Height="549" Width="503" Background="#FF15202B">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="255*"/>
+            <ColumnDefinition Width="245*"/>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
         <ToggleButton Name="PlayPause" Height="50" Click="Button_Play"  BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="341,191,0,0" Foreground="White" HorizontalAlignment="Left" Width="50" VerticalAlignment="Top">
@@ -46,12 +47,14 @@
         <TextBox HorizontalAlignment="Left" Margin="115,423,0,0" Text="MotCléTextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Pomodedouche" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
         <ProgressBar x:Name="TimerBar" HorizontalAlignment="Left" Height="19" Margin="291,152,0,0" VerticalAlignment="Top" Width="149" Foreground="#FF1784DE"/>
-        <Expander Grid.Column="2" Header="Expander" HorizontalAlignment="Left" Height="100" Margin="177,248,0,0" VerticalAlignment="Top" Width="100"/>
+        <Expander Grid.Column="3" Header="Expander" HorizontalAlignment="Left" Height="100" Margin="174,248,0,0" VerticalAlignment="Top" Width="100"/>
 
-        <Grid Margin="10,94,0,0" Height="106" VerticalAlignment="Top" HorizontalAlignment="Left" Width="225">
+        <Grid x:Name="blocPomodoro" Margin="0,84,0,0" HorizontalAlignment="Left" Width="201" Height="87" VerticalAlignment="Top">
             <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,2,0,0" FontSize="18" Foreground="White"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="12,31,0,0" VerticalAlignment="Top" Background="#FF5DEA84" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="54,31,0,0" VerticalAlignment="Top" Background="#FF4ACCFD" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
+            <Separator HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Background="#FFD8D4D4" Width="146" Height="1"/>
+            <Label Content="5 min" HorizontalAlignment="Left" Margin="146,54,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="10" Height="22"/>
 
         </Grid>
     </Grid>
