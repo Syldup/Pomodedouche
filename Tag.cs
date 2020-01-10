@@ -12,11 +12,14 @@ namespace Pomodedouche
         private String name;
         private String color;
 
-        public Tag(IContainer container, String name, String color)
+        public Tag(String name, String color)
         {
             this.name = name;
             this.color = color;
             //container.Add();
         }
+
+        public string Name => this.name;
+        public string Color => "#" + this.color;
     }
 }

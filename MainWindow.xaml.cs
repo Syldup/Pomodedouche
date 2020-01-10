@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace Pomodedouche
             InitializeComponent();
             this.pomodoros = new List<Pomodoro>();
             this.tags = new List<Tag>();
+            this.DataContext = new ObservableCollection<Tag>(this.tags);
 
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
@@ -87,6 +89,7 @@ namespace Pomodedouche
             String name = tbTag.Text;
             String color = "FF5DEA84";
             this.tags.Add(new Tag(name, color));
+            this.DataContext = new ObservableCollection<Tag>(this.tags);
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)

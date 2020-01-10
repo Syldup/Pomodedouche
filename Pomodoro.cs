@@ -10,7 +10,7 @@ namespace Pomodedouche
         private String name;
         private List<Tag> tags;
 
-        public Pomodoro(IContainer container, String name)
+        public Pomodoro(String name)
         {
             this.name = name;
             this.tags = new List<Tag>();
