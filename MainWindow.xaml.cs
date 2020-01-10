@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace Pomodedouche
@@ -14,9 +13,9 @@ namespace Pomodedouche
     {
         private DispatcherTimer timer = new DispatcherTimer();
         private int total_time = 60 * 25;
-        private int left_time = 60 * 25;
+        private int left_time = 0;
         private bool timer_start = false;
-        private bool pause = false;
+        private bool pause = true;
         private List<Pomodoro> pomodoros;
         private List<Tag> tags;
 
@@ -37,12 +36,13 @@ namespace Pomodedouche
         {
             if (left_time <= 0)
             {
+                total_time = 60 * 5;
+
                 if (pause)
-                    total_time = 60 * 5;
-                else
-                    total_time = 60 * 25;
-                left_time = total_time;
+                    total_time *= 5;
                 pause = !pause;
+
+                left_time = total_time;
 
             }
             else

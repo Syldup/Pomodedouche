@@ -6,12 +6,16 @@
         xmlns:local="clr-namespace:Pomodedouche"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
+<<<<<<< HEAD
+        Title="MainWindow" Height="728" Width="504" Background="#FF15202B" ResizeMode="NoResize">
+=======
         Title="MainWindow" Height="549" Width="463" Background="#FF15202B">
+>>>>>>> master
     <Grid>
         <Label Content="Pomodedouche" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" Margin="10,46,0,0" Text="Recherche.." TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Background="#FFCBCBCB"/>
+        <TextBox HorizontalAlignment="Left" Margin="360,19,0,0" Text="Recherche.." TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Background="#FFCBCBCB"/>
 
-        <ToggleButton Name="PlayPause" Height="50" Click="Button_Play"  BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="341,191,0,0" Foreground="White" HorizontalAlignment="Left" Width="50" VerticalAlignment="Top">
+        <ToggleButton Name="PlayPause" Height="50" Click="Button_Play"  BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Margin="104,235,0,0" Foreground="White" HorizontalAlignment="Left" Width="50" VerticalAlignment="Top">
 
             <ToggleButton.Style>
                 <Style TargetType="{x:Type ToggleButton}">
@@ -38,21 +42,30 @@
             </ToggleButton.Style>
         </ToggleButton>
 
-        <Label Name="lbTime" Content="25:00" HorizontalAlignment="Left" Margin="318,94,0,0" VerticalAlignment="Top" FontSize="36" Panel.ZIndex="10" Foreground="White"/>
-        <ProgressBar x:Name="TimerBar" HorizontalAlignment="Left" Height="19" Margin="291,152,0,0" VerticalAlignment="Top" Width="149" Foreground="#FF1784DE"/>
+        <Label Name="lbTime" Content="25:00" HorizontalAlignment="Left" Margin="81,138,0,0" VerticalAlignment="Top" FontSize="36" Panel.ZIndex="10" Foreground="White" HorizontalContentAlignment="Right"/>
+        <ProgressBar x:Name="TimerBar" HorizontalAlignment="Left" Height="19" Margin="54,196,0,0" VerticalAlignment="Top" Width="150" Foreground="#FF1784DE"/>
 
-        <Button Content="Ajouter un mot clé" Margin="0,0,93,91" Click="Button_Add_Tag" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="103"/>
-        <TextBox x:Name="tbTag" Margin="115,0,0,92" Text="Tag" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+        <Button Content="Ajouter tag" Margin="0,0,267,357" Click="Button_Add_Tag" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="102"/>
+        <TextBox x:Name="tbTag" Margin="17,0,0,358" Text="Tag" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="97"/>
 
-        <Button Content="Ajouter pomodoro" Margin="0,0,93,46" Click="Button_Add_Pomodoro" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="103"/>
-        <TextBox x:Name="tbPomoName" Margin="115,0,0,46" Text="No-name" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120"/>
+        <Button Content="Ajouter pomodoro" Margin="0,0,266,308" Click="Button_Add_Pomodoro" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="103"/>
+        <TextBox x:Name="tbPomoName" Margin="17,0,0,309" Text="No-name" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="97"/>
 
+<<<<<<< HEAD
+        <ItemsControl x:Name="icPomos" ItemsSource="{Binding}" Margin="0,60,-40,19" HorizontalAlignment="Right" Width="234">
+=======
         <ItemsControl x:Name="icPomos" ItemsSource="{Binding}" HorizontalAlignment="Left" Width="234" Margin="0,94,0,0">
+>>>>>>> master
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Left" Width="201" Height="87" VerticalAlignment="Top">
-                        <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,2,0,0" FontSize="18" Foreground="White"/>
-                        <ItemsControl ItemsSource="{Binding Tags}" Margin="12,20,0,0">
+                    <Grid HorizontalAlignment="Left" Width="201" Height="auto" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
+                        <ItemsControl Grid.Row="1" ItemsSource="{Binding Tags}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Horizontal" />
@@ -65,15 +78,19 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                        <Separator HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Background="#FFD8D4D4" Width="146" Height="2" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" FontWeight="Normal"/>
-                        <Label Content="5 min" HorizontalAlignment="Left" Margin="146,54,0,0" VerticalAlignment="Top"  Foreground="White" FontSize="10" Height="22"/>
+                        <Separator Margin="0,6,0,0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFD8D4D4" Width="146" Height="2" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" FontWeight="Normal"/>
+                        <Label Grid.Row="2" Content="5 min" HorizontalAlignment="Left" Margin="146,-7,0,0" VerticalAlignment="Top"  Foreground="White" FontSize="10" Height="22"/>
 
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
+<<<<<<< HEAD
+        <ItemsControl x:Name="icTags" ItemsSource="{Binding}" Margin="5,417,252,132">
+=======
         <ItemsControl x:Name="icTags" ItemsSource="{Binding}" Margin="5,349,0,132">
+>>>>>>> master
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
