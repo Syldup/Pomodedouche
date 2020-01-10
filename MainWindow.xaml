@@ -56,9 +56,15 @@
             <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,2,0,0" FontSize="18" Foreground="White"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="12,31,0,0" VerticalAlignment="Top" Background="#FF5DEA84" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="54,31,0,0" VerticalAlignment="Top" Background="#FF4ACCFD" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
+<<<<<<< Updated upstream
             <Label Content="5 min" HorizontalAlignment="Left" Margin="146,54,0,0" VerticalAlignment="Top" Foreground="White" FontSize="10" Height="22"/>
             <Rectangle HorizontalAlignment="Left" Height="4" Margin="-2,65,0,0" Stroke="Black" VerticalAlignment="Top" Width="147" Fill="White"/>
+=======
+            <Separator HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Background="#FFD8D4D4" Width="146" Height="2" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" FontWeight="Normal"/>
+            <Label Content="5 min" HorizontalAlignment="Left" Margin="146,54,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="10" Height="22"/>
+>>>>>>> Stashed changes
 
         </Grid>
+        <TextBox HorizontalAlignment="Left" Margin="10,46,0,0" Text="Recherche.." TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Background="#FFCBCBCB"/>
     </Grid>
 </Window>
