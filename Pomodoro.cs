@@ -14,7 +14,6 @@ namespace Pomodedouche
         {
             this.name = name;
             this.tags = new List<Tag>();
-            //container.Add();
         }
 
         public void setTags(List<Tag> tags)

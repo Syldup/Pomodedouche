@@ -16,7 +16,6 @@ namespace Pomodedouche
         {
             this.name = name;
             this.color = color;
-            //container.Add();
         }
 
         public string getName() {
