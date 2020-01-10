@@ -26,5 +26,8 @@ namespace Pomodedouche
         {
             this.tags.Add(tag);
         }
+
+        public string Name => this.name;
+        public List<Tag> Tags => this.tags;
     }
 }

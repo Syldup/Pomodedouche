@@ -36,7 +36,6 @@ namespace Pomodedouche
             InitializeComponent();
             this.pomodoros = new List<Pomodoro>();
             this.tags = new List<Tag>();
-            this.DataContext = new ObservableCollection<Tag>(this.tags);
 
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
@@ -65,7 +64,7 @@ namespace Pomodedouche
         void update_lbTimer()
         {
             String sec = (left_time % 60).ToString().PadLeft(2, '0');
-            lbTime.Content = $"{left_time / 60}:{sec} {left_time * 100 / total_time}";
+            lbTime.Content = $"{left_time / 60}:{sec}";
             TimerBar.Value = left_time * 100 / total_time;
         }
 
@@ -89,18 +88,19 @@ namespace Pomodedouche
             String name = tbTag.Text;
             String color = "FF5DEA84";
             this.tags.Add(new Tag(name, color));
-            this.DataContext = new ObservableCollection<Tag>(this.tags);
+            this.icTags.DataContext = new ObservableCollection<Tag>(this.tags);
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)
         {
             String name = tbPomoName.Text;
             Pomodoro pomo = new Pomodoro(name);
-
+            
             pomo.setTags(tags);
             tags = new List<Tag>();
 
-            this.pomodoros.Add(pomo);
+            this.pomodoros.Add(pomo); 
+            this.icPomos.DataContext = new ObservableCollection<Pomodoro>(this.pomodoros);
         }
     }
 }
