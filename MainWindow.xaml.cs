@@ -27,10 +27,14 @@ namespace Pomodedouche
         private int left_time = 60 * 25;
         private bool timer_start = false;
         private bool pause = false;
+        private List<Pomodoro> pomodoros;
+        private List<Tag> tags;
 
         public MainWindow()
         {
             InitializeComponent();
+            this.pomodoros = new List<Pomodoro>();
+            this.tags = new List<Tag>();
 
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
@@ -80,12 +84,20 @@ namespace Pomodedouche
 
         private void Button_Add_Tag(object sender, RoutedEventArgs e)
         {
-
+            String name = tbTag.Text;
+            String color = "FF5DEA84";
+            this.tags.Add(new Tag(name, color));
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)
         {
+            String name = tbPomoName.Text;
+            Pomodoro pomo = new Pomodoro(name);
 
+            pomo.setTags(tags);
+            tags = new List<Tag>();
+
+            this.pomodoros.Add(pomo);
         }
     }
 }
