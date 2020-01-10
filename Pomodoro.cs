@@ -27,7 +27,16 @@ namespace Pomodedouche
             this.tags.Add(tag);
         }
 
-        public string Name => this.name;
+        public string getName()
+        {
+            if (this.name.Length > 23)
+            {
+                return (this.name.Substring(0, 19) + "...");
+            }
+            return this.name;
+        }
+  
+        public string Name => getName();
         public List<Tag> Tags => this.tags;
     }
 }

@@ -19,7 +19,14 @@ namespace Pomodedouche
             //container.Add();
         }
 
-        public string Name => this.name;
+        public string getName() {
+            if(this.name.Length > 15){
+                return (this.name.Substring(0, 12) + "...");
+            }
+            return this.name;
+        }
+
+        public string Name => getName();
         public string Color => "#" + this.color;
     }
 }
