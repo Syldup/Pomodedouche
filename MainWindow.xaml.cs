@@ -89,6 +89,7 @@ namespace Pomodedouche
             tags = new List<Tag>();
 
             this.pomodoros.Add(pomo);
+            this.icTags.DataContext = new ObservableCollection<Tag>(this.tags);
             this.icPomos.DataContext = new ObservableCollection<Pomodoro>(this.pomodoros);
         }
     }

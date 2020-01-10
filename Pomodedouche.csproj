@@ -16,4 +16,19 @@
     <Resource Include="playbutton.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Database1DataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Database1DataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Database1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1DataSet.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>
