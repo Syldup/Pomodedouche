@@ -48,7 +48,7 @@
         <ProgressBar x:Name="TimerBar" HorizontalAlignment="Left" Height="19" Margin="291,152,0,0" VerticalAlignment="Top" Width="149" Foreground="#FF1784DE"/>
         <Expander Grid.Column="2" Header="Expander" HorizontalAlignment="Left" Height="100" Margin="177,248,0,0" VerticalAlignment="Top" Width="100"/>
 
-        <Grid Margin="10,94,311,333">
+        <Grid Margin="10,94,0,0" Height="106" VerticalAlignment="Top" HorizontalAlignment="Left" Width="225">
             <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,2,0,0" FontSize="18" Foreground="White"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="12,31,0,0" VerticalAlignment="Top" Background="#FF5DEA84" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
             <Label Content="Label" HorizontalAlignment="Left" Margin="54,31,0,0" VerticalAlignment="Top" Background="#FF4ACCFD" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" MaxHeight="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Thin" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" FlowDirection="LeftToRight" Padding="5,3,5,5"/>
