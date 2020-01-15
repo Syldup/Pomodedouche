@@ -6,7 +6,7 @@ using System.Text;
 namespace Pomodedouche
 {
 
-    class Tag
+    public class Tag
     {
         private static int count = 0;
         private String name;

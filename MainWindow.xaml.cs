@@ -17,13 +17,11 @@ namespace Pomodedouche
         private bool timer_start = false;
         private bool pause = true;
         private List<Pomodoro> pomodoros;
-        private List<Tag> tags;
 
         public MainWindow()
         {
             InitializeComponent();
             this.pomodoros = new List<Pomodoro>();
-            this.tags = new List<Tag>();
 
             var window = new Window();
 
@@ -74,22 +72,20 @@ namespace Pomodedouche
 
         private void Button_Add_Tag(object sender, RoutedEventArgs e)
         {
-            String name = tbTag.Text;
-            String color = "FF5DEA84";
-            this.tags.Add(new Tag(name, color));
-            this.icTags.DataContext = new ObservableCollection<Tag>(this.tags);
+            tmpTag.addTag(tbTag.Text, "FF5DEA84");
+            tbTag.Text = "";
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)
         {
             String name = tbPomoName.Text;
+            tbPomoName.Text = "";
             Pomodoro pomo = new Pomodoro(name);
 
-            pomo.setTags(tags);
-            tags = new List<Tag>();
+            pomo.setTags(tmpTag.tags);
 
             this.pomodoros.Add(pomo);
-            this.icTags.DataContext = new ObservableCollection<Tag>(this.tags);
+            tmpTag.clear();
             this.icPomos.DataContext = new ObservableCollection<Pomodoro>(this.pomodoros);
         }
     }
