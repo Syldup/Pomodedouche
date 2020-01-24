@@ -16,14 +16,10 @@ namespace Pomodedouche
         private int left_time = 0;
         private bool timer_start = false;
         private bool pause = true;
-        private List<Pomodoro> pomodoros;
 
         public MainWindow()
         {
             InitializeComponent();
-            this.pomodoros = new List<Pomodoro>();
-
-            var window = new Window();
 
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
@@ -72,21 +68,21 @@ namespace Pomodedouche
 
         private void Button_Add_Tag(object sender, RoutedEventArgs e)
         {
-            tmpTag.addTag(tbTag.Text, "FF5DEA84");
-            tbTag.Text = "";
+            tmpTags.addTag(new Controleur.Tag(tbTag.Text, "FF5DEA84"));
+            if (tmpTags.List.Count != 0)
+            {
+                tbTag.Text = "" + tmpTags.List[0].Name;
+            }
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)
         {
-            String name = tbPomoName.Text;
+            Controleur.Pomodoro pomo = new Controleur.Pomodoro(tbPomoName.Text);
             tbPomoName.Text = "";
-            Pomodoro pomo = new Pomodoro(name);
 
-            pomo.setTags(tmpTag.tags);
-
-            this.pomodoros.Add(pomo);
-            tmpTag.clear();
-            this.icPomos.DataContext = new ObservableCollection<Pomodoro>(this.pomodoros);
+            pomo.setTags(tmpTags.List);
+            listPomos.addPomodoro(pomo);
+            tmpTags.clear();
         }
     }
 }

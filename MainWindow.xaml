@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pomodedouche"
+        xmlns:controleur="clr-namespace:Pomodedouche.Controleur"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="728" Width="504" Background="#FF15202B" ResizeMode="NoResize">
@@ -15,15 +15,11 @@
 
             <ToggleButton.Style>
                 <Style TargetType="{x:Type ToggleButton}">
-
-
                     <Setter Property="Content">
                         <Setter.Value>
                             <Image Source="playbutton.png" Height="50" Width="50" HorizontalAlignment="Center"/>
                         </Setter.Value>
                     </Setter>
-
-
                     <Style.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Content">
@@ -33,7 +29,6 @@
                             </Setter>
                         </Trigger>
                     </Style.Triggers>
-
                 </Style>
             </ToggleButton.Style>
         </ToggleButton>
@@ -49,30 +44,8 @@
         <Button Content="Ajouter pomodoro" Margin="0,0,266,308" Click="Button_Add_Pomodoro" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="103"/>
         <TextBox x:Name="tbPomoName" Margin="17,0,0,309" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="97"/>
 
-        <ItemsControl x:Name="icPomos" ItemsSource="{Binding}" Margin="0,52,10,10" HorizontalAlignment="Right" Width="184">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid HorizontalAlignment="Left" Width="201" Height="auto" VerticalAlignment="Top">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
-                        <local:Tags Grid.Row="1" DataContext="{Binding Tags}"/>
-                        <Separator Grid.Row="2" Margin="0,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFD8D4D4" Width="146" Height="2" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" FontWeight="Normal"/>
-                        <Label Grid.Row="2" Content="5 min" HorizontalAlignment="Left" Margin="146,-7,0,0" VerticalAlignment="Top"  Foreground="White" FontSize="10" Height="22"/>
+        <controleur:Pomodoros x:Name="listPomos" Margin="0,52,10,10" HorizontalAlignment="Right" Width="184"/>
 
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-
-        <local:Tags x:Name="tmpTag" Margin="5,417,252,132"/>
+        <controleur:Tags x:Name="tmpTags" Margin="5,417,252,132"/>
     </Grid>
 </Window>

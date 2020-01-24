@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Pomodedouche.Controleur.Pomodoro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controleur="clr-namespace:Pomodedouche.Controleur"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+    <Grid x:Name="root" Width="201" Height="auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
+        <controleur:Tags Grid.Row="1" DataContext="{Binding Tags}"/>
+        <Separator Grid.Row="2" Margin="0,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFD8D4D4" Width="146" Height="2" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" FontWeight="Normal"/>
+        <Label Grid.Row="2" Content="5 min" HorizontalAlignment="Left" Margin="146,-7,0,0" VerticalAlignment="Top"  Foreground="White" FontSize="10" Height="22"/>
+    </Grid>
+</UserControl>

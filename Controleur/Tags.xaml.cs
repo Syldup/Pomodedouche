@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
-namespace Pomodedouche
+namespace Pomodedouche.Controleur
 {
     /// <summary>
     /// Logique d'interaction pour Tags.xaml
     /// </summary>
     public partial class Tags : UserControl
     {
-        public List<Tag> tags { get; private set; }
+        public List<Tag> List { get; private set; }
 
         public Tags()
         {
+            List = new List<Tag>();
             InitializeComponent();
-            tags = new List<Tag>();
         }
 
-        public void addTag(String name, String color)
+        public void addTag(Tag tag)
         {
-            tags.Add(new Tag(name, color));
-            DataContext = new ObservableCollection<Tag>(tags);
+            List.Add(tag);
+            root.DataContext = new ObservableCollection<Tag>(List);
         }
 
 
         public void clear()
         {
-            tags = new List<Tag>();
-            DataContext = new ObservableCollection<Tag>(tags);
+            List = new List<Tag>();
+            root.DataContext = new ObservableCollection<Tag>(List);
         }
     }
 }
