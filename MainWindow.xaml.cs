@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Threading;
+using MySql.Data.MySqlClient;
 
 namespace Pomodedouche
 {
@@ -17,6 +16,7 @@ namespace Pomodedouche
         private bool timer_start = false;
         private bool pause = true;
         private int nb_pomo = 0;
+        string connString = "SERVER=127.0.0.1; DATABASE=pomodedouche; UID=root; PASSWORD=rootroot";
 
         public MainWindow()
         {
@@ -25,6 +25,23 @@ namespace Pomodedouche
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.Tick += timer_Tick;
+
+            Console.WriteLine("Getting Connection ...");
+            MySqlConnection conn = new MySqlConnection(connString);
+
+            try
+            {
+                Console.WriteLine("Openning Connection ...");
+                conn.Open();
+                Console.WriteLine("Connection successful!");
+
+            } catch(Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+
+            Console.Read();
+
         }
 
         void timer_Tick(object sender, EventArgs e)
