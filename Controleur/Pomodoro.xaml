@@ -11,7 +11,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
+        <Label Grid.Row="0" Content="{Binding SubName}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18" Foreground="White"/>
         <controleur:Tags Grid.Row="1" DataContext="{Binding Tags}"/>
         <Separator Grid.Row="2" Margin="0,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFD8D4D4" Width="146" Height="2" BorderThickness="0,0,0,0" SnapsToDevicePixels="True" FontWeight="Normal"/>
         <Label Grid.Row="2" Content="5 min" HorizontalAlignment="Left" Margin="146,-7,0,0" VerticalAlignment="Top"  Foreground="White" FontSize="10" Height="22"/>

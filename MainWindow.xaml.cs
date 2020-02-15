@@ -68,10 +68,10 @@ namespace Pomodedouche
 
         private void Button_Add_Tag(object sender, RoutedEventArgs e)
         {
-            tmpTags.addTag(new Controleur.Tag(tbTag.Text, "FF5DEA84"));
-            if (tmpTags.List.Count != 0)
+            if (tbTag.Text != "")
             {
-                tbTag.Text = "" + tmpTags.List[0].Name;
+                tmpTags.addTag(new Controleur.Tag(tbTag.Text, "FF5DEA84"));
+                tbTag.Text = "";
             }
         }
 
@@ -84,5 +84,6 @@ namespace Pomodedouche
             listPomos.addPomodoro(pomo);
             tmpTags.clear();
         }
+        public string Cls => "MainWindow";
     }
 }

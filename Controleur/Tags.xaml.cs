@@ -24,11 +24,12 @@ namespace Pomodedouche.Controleur
             root.DataContext = new ObservableCollection<Tag>(List);
         }
 
-
         public void clear()
         {
             List = new List<Tag>();
             root.DataContext = new ObservableCollection<Tag>(List);
         }
+
+        public string Cls => "Tags";
     }
 }

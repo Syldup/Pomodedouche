@@ -12,15 +12,7 @@ namespace Pomodedouche.Controleur
         private String name;
         public List<Tag> Tags { get; private set; }
 
-        public Pomodoro()
-        {
-            this.name = "Pomodoro n°x";
-            this.Tags = new List<Tag>();
-            InitializeComponent();
-            root.DataContext = this;
-        }
-
-        public Pomodoro(String name)
+        public Pomodoro(String name = "Pomodoro n°x")
         {
             this.name = name;
             this.Tags = new List<Tag>();
@@ -38,15 +30,16 @@ namespace Pomodedouche.Controleur
             this.Tags.Add(tag);
         }
 
-        public string getName()
+        public string getSubName()
         {
-            if (this.name.Length > 23)
+            if (name.Length > 23)
             {
-                return (this.name.Substring(0, 19) + "...");
+                return (name.Substring(0, 19) + "...");
             }
-            return this.name;
+            return name;
         }
 
-        public string Name => getName();
+        public string SubName => getSubName();
+        public string Cls => "Pomodoro";
     }
 }

@@ -30,5 +30,6 @@ namespace Pomodedouche.Controleur
             List = new List<Pomodoro>();
             root.DataContext = new ObservableCollection<Pomodoro>(List);
         }
+        public string Cls => "Pomodoros";
     }
 }

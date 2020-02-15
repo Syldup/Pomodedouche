@@ -11,14 +11,6 @@ namespace Pomodedouche.Controleur
         private String name;
         private String color;
 
-        public Tag()
-        {
-            this.name = "";
-            this.color = "FF5DEA84";
-            InitializeComponent();
-            root.DataContext = this;
-        }
-
         public Tag(String name, String color)
         {
             this.name = name;
@@ -27,7 +19,7 @@ namespace Pomodedouche.Controleur
             root.DataContext = this;
         }
 
-        public string getName()
+        public string getSubName()
         {
             if (name.Length > 15)
             {
@@ -36,7 +28,8 @@ namespace Pomodedouche.Controleur
             return name;
         }
 
-        public string Name => name;
-        public string Color => "#" + this.color;
+        public string Cls => "Tag";
+        public string SubName => getSubName();
+        public string Color => "#" + color;
     }
 }
