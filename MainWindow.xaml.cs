@@ -16,6 +16,7 @@ namespace Pomodedouche
         private int left_time = 0;
         private bool timer_start = false;
         private bool pause = true;
+        private int nb_pomo = 0;
 
         public MainWindow()
         {
@@ -68,16 +69,21 @@ namespace Pomodedouche
 
         private void Button_Add_Tag(object sender, RoutedEventArgs e)
         {
-            if (tbTag.Text != "")
+            if (tbTag.Text.Trim() != "")
             {
-                tmpTags.addTag(new Controleur.Tag(tbTag.Text, "FF5DEA84"));
+                tmpTags.addTag(new Controleur.Tag(tbTag.Text.Trim(), "FF5DEA84"));
                 tbTag.Text = "";
             }
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)
         {
-            Controleur.Pomodoro pomo = new Controleur.Pomodoro(tbPomoName.Text);
+            if (tbPomoName.Text.Trim() == "")
+            {
+                nb_pomo += 1;
+                tbPomoName.Text = "Pomodoro n°" + nb_pomo;
+            }
+            Controleur.Pomodoro pomo = new Controleur.Pomodoro(tbPomoName.Text.Trim());
             tbPomoName.Text = "";
 
             pomo.setTags(tmpTags.List);
