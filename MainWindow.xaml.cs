@@ -16,6 +16,7 @@ namespace Pomodedouche
         private bool timer_start = false;
         private bool pause = true;
         private int nb_pomo = 0;
+        private int cpt_pomo = 0;
         string connString = "SERVER=127.0.0.1; DATABASE=pomodedouche; UID=root; PASSWORD=rootroot";
 
         public MainWindow()
@@ -50,8 +51,11 @@ namespace Pomodedouche
             {
                 total_time = 60 * 5;
 
-                if (pause)
+                if (pause || nb_pomo % 4 == 0)
+                {
+                    nb_pomo += 1;
                     total_time *= 5;
+                }
                 pause = !pause;
 
                 left_time = total_time;
@@ -97,8 +101,8 @@ namespace Pomodedouche
         {
             if (tbPomoName.Text.Trim() == "")
             {
-                nb_pomo += 1;
-                tbPomoName.Text = "Pomodoro n°" + nb_pomo;
+                cpt_pomo += 1;
+                tbPomoName.Text = "Pomodoro n°" + cpt_pomo;
             }
             Controleur.Pomodoro pomo = new Controleur.Pomodoro(tbPomoName.Text.Trim());
             tbPomoName.Text = "";

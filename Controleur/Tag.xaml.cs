@@ -11,6 +11,14 @@ namespace Pomodedouche.Controleur
         private String name;
         private String color;
 
+        public Tag()
+        {
+            this.name = "";
+            this.color = "FF5DEA84";
+            InitializeComponent();
+            root.DataContext = this;
+        }
+
         public Tag(String name, String color)
         {
             this.name = name;

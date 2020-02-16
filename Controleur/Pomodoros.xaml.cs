@@ -21,6 +21,8 @@ namespace Pomodedouche.Controleur
         public void addPomodoro(Pomodoro pomo)
         {
             List.Add(pomo);
+            if (List.Count % 4 == 0)
+                pomo.Long_pause = true;
             root.DataContext = new ObservableCollection<Pomodoro>(List);
         }
 

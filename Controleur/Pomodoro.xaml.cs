@@ -10,7 +10,16 @@ namespace Pomodedouche.Controleur
     public partial class Pomodoro : UserControl
     {
         private String name;
+        private bool long_pause = false;
         public List<Tag> Tags { get; private set; }
+
+        public Pomodoro()
+        {
+            this.name = "Pomodoro n°x";
+            this.Tags = new List<Tag>();
+            InitializeComponent();
+            root.DataContext = this;
+        }
 
         public Pomodoro(String name = "Pomodoro n°x")
         {
@@ -39,7 +48,15 @@ namespace Pomodedouche.Controleur
             return name;
         }
 
+        public string getStrTime()
+        {
+            return Long_pause ? "25 min" : "5 min";
+        }
+
         public string SubName => getSubName();
+        public string StrTime => getStrTime();
         public string Cls => "Pomodoro";
+
+        public bool Long_pause { get => long_pause; set => long_pause = value; }
     }
 }
