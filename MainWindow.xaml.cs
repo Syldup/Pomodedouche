@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Threading;
 using MySql.Data.MySqlClient;
+using System.Data;
+
 
 namespace Pomodedouche
 {
@@ -17,7 +19,11 @@ namespace Pomodedouche
         private bool pause = true;
         private int nb_pomo = 0;
         private int cpt_pomo = 0;
+
+        ///  DB test
         string connString = "SERVER=127.0.0.1; DATABASE=pomodedouche; UID=root; PASSWORD=rootroot";
+        private MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+        private DataSet ds = new DataSet();
 
         public MainWindow()
         {
@@ -26,23 +32,7 @@ namespace Pomodedouche
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.Tick += timer_Tick;
-
-            Console.WriteLine("Getting Connection ...");
-            MySqlConnection conn = new MySqlConnection(connString);
-
-            try
-            {
-                Console.WriteLine("Openning Connection ...");
-                conn.Open();
-                Console.WriteLine("Connection successful!");
-
-            } catch(Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
-
-            Console.Read();
-
+            
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -93,8 +83,20 @@ namespace Pomodedouche
             if (tbTag.Text.Trim() != "")
             {
                 tmpTags.addTag(new Controleur.Tag(tbTag.Text.Trim(), "FF5DEA84"));
+                // Nouvelle connexion
+                MySqlConnection conn = new MySqlConnection(connString);
+                // On ouvre la connexion
+                conn.Open();
+                // Creation de la commande pour sql
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "INSERT INTO tag(nom_tag) VALUES(?nom)";
+                cmd.Parameters.Add("?nom", MySqlDbType.VarChar).Value = tbTag.Text;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
                 tbTag.Text = "";
             }
+
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)
@@ -105,6 +107,18 @@ namespace Pomodedouche
                 tbPomoName.Text = "Pomodoro n°" + cpt_pomo;
             }
             Controleur.Pomodoro pomo = new Controleur.Pomodoro(tbPomoName.Text.Trim());
+
+            // Nouvelle connexion
+            MySqlConnection conn = new MySqlConnection(connString);
+            // On ouvre la connexion
+            conn.Open();
+            // Creation de la commande pour sql
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO pomodoro(nom) VALUES(?nom)";
+            cmd.Parameters.Add("?nom", MySqlDbType.VarChar).Value = tbPomoName.Text;
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
             tbPomoName.Text = "";
 
             pomo.setTags(tmpTags.List);
