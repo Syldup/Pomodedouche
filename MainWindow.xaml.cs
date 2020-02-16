@@ -3,7 +3,8 @@ using System.Windows;
 using System.Windows.Threading;
 using MySql.Data.MySqlClient;
 using System.Data;
-
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace Pomodedouche
 {
@@ -17,22 +18,45 @@ namespace Pomodedouche
         private int left_time = 0;
         private bool timer_start = false;
         private bool pause = true;
+
         private int nb_pomo = 0;
         private int cpt_pomo = 0;
 
-        ///  DB test
-        string connString = "SERVER=127.0.0.1; DATABASE=pomodedouche; UID=root; PASSWORD=rootroot";
-        private MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-        private DataSet ds = new DataSet();
+        private string connString = "SERVER=127.0.0.1; DATABASE=pomodedouche; UID=admin; PASSWORD=admin";
+        private List<Controleur.Tag> allTags;
 
         public MainWindow()
         {
             InitializeComponent();
+            bt_addTag.Content = "Ajouter" + Environment.NewLine + "   tag";
+            bt_addPomo.Content = "  Ajouter" + Environment.NewLine + "pomodoro";
+
+            allTags = new List<Controleur.Tag>();
+
+            // Nouvelle connexion
+            MySqlConnection conn = new MySqlConnection(connString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            // Get tout les tags
+            cmd.CommandText = "SELECT * FROM tag";
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                long tag_id = Convert.ToInt64(rdr[0]);
+                string tag_name = (string)rdr[1];
+                string tag_color = (string)rdr[2];
+                Controleur.Tag tag = new Controleur.Tag(tag_id, tag_name, tag_color);
+                allTags.Add(tag);
+                cbTags.Items.Add(tag);
+            }
+            rdr.Close();
+            conn.Close();
 
             update_lbTimer();
             timer.Interval = TimeSpan.FromMilliseconds(5);
             timer.Tick += timer_Tick;
-            
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -82,49 +106,95 @@ namespace Pomodedouche
         {
             if (tbTag.Text.Trim() != "")
             {
-                tmpTags.addTag(new Controleur.Tag(tbTag.Text.Trim(), "FF5DEA84"));
+                long tag_id = 0;
+                string tag_name = tbTag.Text.Trim();
+                string tag_color = "5DEA84";
+
                 // Nouvelle connexion
                 MySqlConnection conn = new MySqlConnection(connString);
-                // On ouvre la connexion
                 conn.Open();
-                // Creation de la commande pour sql
                 MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO tag(nom_tag) VALUES(?nom)";
-                cmd.Parameters.Add("?nom", MySqlDbType.VarChar).Value = tbTag.Text;
-                cmd.ExecuteNonQuery();
+
+                // Get le tag si il exist
+                cmd.CommandText = "SELECT id, color FROM tag WHERE name=?name";
+                cmd.Parameters.AddWithValue("?name", tag_name);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                if (rdr.Read())
+                {
+                    tag_id = Convert.ToInt64(rdr[0]);
+                    tag_color = (string)rdr[1];
+                    rdr.Close();
+                }
+                else
+                {
+                    rdr.Close();
+                    // Insetion du tag
+                    cmd.CommandText = "INSERT INTO tag (name, color) VALUES (?name, ?color)";
+                    cmd.Parameters.AddWithValue("?color", tag_color);
+                    cmd.ExecuteNonQuery();
+
+                    tag_id = cmd.LastInsertedId;
+                }
                 conn.Close();
 
-                tbTag.Text = "";
+                tmpTags.addTag(new Controleur.Tag(tag_id, tag_name, tag_color));
             }
+            tbTag.Text = "";
 
         }
 
         private void Button_Add_Pomodoro(object sender, RoutedEventArgs e)
         {
-            if (tbPomoName.Text.Trim() == "")
+            string pomo_name = tbPomoName.Text.Trim();
+            if (pomo_name == "")
             {
                 cpt_pomo += 1;
-                tbPomoName.Text = "Pomodoro n°" + cpt_pomo;
+                pomo_name = "Pomodoro n°" + cpt_pomo;
             }
-            Controleur.Pomodoro pomo = new Controleur.Pomodoro(tbPomoName.Text.Trim());
 
             // Nouvelle connexion
             MySqlConnection conn = new MySqlConnection(connString);
-            // On ouvre la connexion
             conn.Open();
-            // Creation de la commande pour sql
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "INSERT INTO pomodoro(nom) VALUES(?nom)";
-            cmd.Parameters.Add("?nom", MySqlDbType.VarChar).Value = tbPomoName.Text;
+
+            // Insetion du pomodoro
+            cmd.CommandText = "INSERT INTO pomodoro (name) VALUES (?name)";
+            cmd.Parameters.Add("?name", MySqlDbType.VarChar).Value = pomo_name;
             cmd.ExecuteNonQuery();
+
+            long pomo_id = cmd.LastInsertedId;
+
+            // Insetion des tags
+            cmd.CommandText = "INSERT INTO pomodoro_tags (id_pomo, id_tag) VALUES (?id_pomo, ?id_tag)";
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("?id_pomo", pomo_id);
+            cmd.Parameters.AddWithValue("?id_tag", 0);
+
+            tmpTags.List.ForEach(delegate (Controleur.Tag tag)
+            {
+                cmd.Parameters["?id_tag"].Value = tag.Id;
+                cmd.ExecuteNonQuery();
+            });
             conn.Close();
 
-            tbPomoName.Text = "";
-
+            Controleur.Pomodoro pomo = new Controleur.Pomodoro(pomo_id, pomo_name);
             pomo.setTags(tmpTags.List);
             listPomos.addPomodoro(pomo);
+
             tmpTags.clear();
+            tbPomoName.Text = "";
         }
+
         public string Cls => "MainWindow";
+
+        private void textColorChange(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            tbColor.Text = Regex.Replace(tbColor.Text, @"[^a-fA-F0-9\-]", "");
+            if (tbColor.Text.Length == 6)
+            {
+
+            }
+        }
     }
 }

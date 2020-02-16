@@ -38,14 +38,24 @@
         <Label Name="lbTime" Content="25:00" HorizontalAlignment="Left" Margin="81,138,0,0" VerticalAlignment="Top" FontSize="36" Panel.ZIndex="10" Foreground="White" HorizontalContentAlignment="Right"/>
         <ProgressBar x:Name="TimerBar" HorizontalAlignment="Left" Height="19" Margin="54,196,0,0" VerticalAlignment="Top" Width="150" Foreground="#FF1784DE"/>
 
-        <Button Content="Ajouter tag" Margin="0,0,267,357" Click="Button_Add_Tag" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="102"/>
-        <TextBox x:Name="tbTag" Margin="17,0,0,358" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="97"/>
+        <Button x:Name="bt_addTag" Content="Ajouter tag" Margin="0,0,227,343" Click="Button_Add_Tag" Height="49" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="82"/>
+        <TextBox x:Name="tbTag" Margin="17,0,0,374" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="94"/>
 
-        <Button Content="Ajouter pomodoro" Margin="0,0,266,308" Click="Button_Add_Pomodoro" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="103"/>
-        <TextBox x:Name="tbPomoName" Margin="17,0,0,309" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="97"/>
+        <Button x:Name="bt_addPomo" Content="Ajouter pomodoro" Margin="0,0,226,286" Click="Button_Add_Pomodoro" Height="49" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="83"/>
+        <TextBox x:Name="tbPomoName" Margin="17,0,0,302" TextWrapping="Wrap" Height="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150"/>
 
         <controleur:Pomodoros x:Name="listPomos" Margin="0,52,10,10" HorizontalAlignment="Right" Width="184"/>
 
-        <controleur:Tags x:Name="tmpTags" Margin="5,417,252,132"/>
+        <controleur:Tags x:Name="tmpTags" Margin="10,511,247,38"/>
+        <ComboBox x:Name="cbTags" HorizontalAlignment="Left" Margin="17,333,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <controleur:Tag DataContext="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="tbColor" HorizontalAlignment="Left" Margin="116,306,0,0" Text="5DEA84" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" MaxLength="6" TextChanged="textColorChange"/>
     </Grid>
 </Window>

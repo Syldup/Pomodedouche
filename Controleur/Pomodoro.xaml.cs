@@ -9,6 +9,7 @@ namespace Pomodedouche.Controleur
     /// </summary>
     public partial class Pomodoro : UserControl
     {
+        public readonly long Id;
         private String name;
         private bool long_pause = false;
         public List<Tag> Tags { get; private set; }
@@ -21,8 +22,9 @@ namespace Pomodedouche.Controleur
             root.DataContext = this;
         }
 
-        public Pomodoro(String name = "Pomodoro n°x")
+        public Pomodoro(long id, String name)
         {
+            this.Id = id;
             this.name = name;
             this.Tags = new List<Tag>();
             InitializeComponent();

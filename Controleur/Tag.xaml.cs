@@ -8,19 +8,21 @@ namespace Pomodedouche.Controleur
     /// </summary>
     public partial class Tag : UserControl
     {
+        public readonly long Id;
         private String name;
         private String color;
 
         public Tag()
         {
             this.name = "";
-            this.color = "FF5DEA84";
+            this.color = "5DEA84";
             InitializeComponent();
             root.DataContext = this;
         }
 
-        public Tag(String name, String color)
+        public Tag(long id, String name, String color)
         {
+            this.Id = id;
             this.name = name;
             this.color = color;
             InitializeComponent();
@@ -38,6 +40,6 @@ namespace Pomodedouche.Controleur
 
         public string Cls => "Tag";
         public string SubName => getSubName();
-        public string Color => "#" + color;
+        public string Color => "#FF" + color;
     }
 }
