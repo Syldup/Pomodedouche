@@ -22,7 +22,7 @@ namespace Pomodedouche
         private int nb_pomo = 0;
         private int cpt_pomo = 0;
 
-        private string connString = "SERVER=127.0.0.1; DATABASE=pomodedouche; UID=admin; PASSWORD=admin";
+        private string connString = "SERVER=127.0.0.1; DATABASE=pomodedouche; UID=root; PASSWORD=rootroot";
         private List<Controleur.Tag> allTags;
 
         public MainWindow()
@@ -195,6 +195,28 @@ namespace Pomodedouche
             {
 
             }
+        }
+
+        private void Search_Text_Changed(object sender, RoutedEventArgs e)
+        {
+            string searchText = searchBox.Text;
+
+            // Nouvelle connexion
+            MySqlConnection conn = new MySqlConnection(connString);
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand();
+
+            // Recherche
+            cmd.CommandText = "SELECT id,name FROM pomodoro WHERE name=?name";
+            cmd.Parameters.AddWithValue("?name", searchText);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while(rdr.Read())
+            {
+                string searchedPomoName = (string)rdr[1];
+                searchLabel.Content = searchedPomoName;
+            }
+            rdr.Close();
+
         }
     }
 }
